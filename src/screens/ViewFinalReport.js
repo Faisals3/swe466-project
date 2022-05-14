@@ -105,7 +105,7 @@ export default function ViewFinalReport() {
                             element.ResourceName,
                             elementCost+'$'
                             ]
-            totalcost += elementCost.parseInt()
+            totalcost += elementCost
             tempArray.push(data)
             data = []
             });
