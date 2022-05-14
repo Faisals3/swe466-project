@@ -24,12 +24,10 @@ export default function ViewFinalReport() {
                     var docRef = dbRoot.collection("Resources").doc(taskData.ResourceID);
                     await docRef.get().then((doc) => {
                          if (doc.exists) {
-                             console.log("Resource function data:", doc.data());
                              const tempResource = doc.data();
                              taskData.ResourceType = tempResource.Type
                               taskData.ResourceCostHour = tempResource.CostHour
                               taskData.ResourceCostUse = tempResource.CostUse
-                              console.log("taskData final : ",taskData);
                               arrayOfTasks.push(taskData);
                               
                               
@@ -40,7 +38,6 @@ export default function ViewFinalReport() {
                      }).catch((error) => {
                          console.log("Error getting document:", error);
                      });
-                     console.log('array of tasks from firebase : ' , arrayOfTasks);
                      formatData(arrayOfTasks)
                      setTasks(arrayOfTasks);
                    }
@@ -93,7 +90,6 @@ export default function ViewFinalReport() {
 
     const formatData = (tasks) => {
         let totalcost = 0;
-        console.log("assign tasks : " , tasks);
         let tempArray = [];
             tasks?.forEach(element => {
                 let elementCost = getCost(element.ResourceType,element.ResourceCostHour,element.ResourceCostUse , getDuration(element.StartD,element.StartM,element.StartY,element.FinishD,element.FinishM,element.FinishY)) ;
@@ -105,18 +101,18 @@ export default function ViewFinalReport() {
                             element.ResourceName,
                             elementCost+'$'
                             ]
-            totalcost += elementCost
+
+            totalcost = totalcost + parseInt(elementCost,10) 
+            console.log(`total cost ${totalcost} element cost ${elementCost}`);
             tempArray.push(data)
             data = []
             });
-
+            
         let elementTotalCost = [
             "Total Cost","","","","","",totalcost+'$'
         ]
         tempArray.push(elementTotalCost)
         setTableData(tempArray)    
-        console.log("Array to assign : " , tempArray);
-        
     }
 
     useEffect(() => {

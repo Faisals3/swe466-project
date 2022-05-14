@@ -7,7 +7,7 @@ export default function ViewResources() {
 
     const [tasks,setTasks] = useState([])
     const [resources,setResources] = useState ([])
-    const [tableHead,setTableHead] = useState (['Resource ID' , 'Resource Name' , 'Type' , 'Cost/Hour' , 'cost/Use'])
+    const [tableHead,setTableHead] = useState (['Resource ID' , 'Resource Name' , 'Type' , 'St Rate' , 'cost/Use'])
     const [tableData,setTableData] = useState ([])
 
     async function getDataFromFireBase() {

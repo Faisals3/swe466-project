@@ -9,7 +9,7 @@ export default function EditResources({navigation}) {
 
     const [tasks,setTasks] = useState([])
     const [resources,setResources] = useState ([])
-    const [tableHead,setTableHead] = useState (['Resource ID' , 'Resource Name' , 'Type' , 'Cost/Hour' , 'Cost/Use' , 'Actions'])
+    const [tableHead,setTableHead] = useState (['Resource ID' , 'Resource Name' , 'Type' , 'St Rate' , 'Cost/Use' , 'Actions'])
     const [tableData,setTableData] = useState ([])
     const [formVisible,setFormVisible] = useState(false)
     const [updateVisible,setUpdateVisible] = useState(false)
@@ -190,7 +190,7 @@ export default function EditResources({navigation}) {
                     />
   
                     <TextInput
-                    label="Cost/Hour"
+                    label="St Rate"
                     value={costH}
                     onChangeText={text => setCostH(text)}
                     keyboardType = 'numeric'
@@ -243,7 +243,7 @@ export default function EditResources({navigation}) {
                     />
   
                     <TextInput
-                    label="Cost/Hour"
+                    label="St Rate"
                     value={costH}
                     onChangeText={text => setCostH(text)}
                     keyboardType = 'numeric'
